@@ -20,13 +20,16 @@ jobs:
   run:
     name: Can the code be prettier? 🤔
     runs-on: ubuntu-latest
-    # workflow_dispatch always lets you select the branch ref, even though in this case we only ever want to run the action on `main` this we need an if check
     steps:
       - uses: actions/checkout@v6
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
       - uses: actions/setup-node@v6
         with:
-          cache: npm
+          cache: pnpm
           node-version: lts/*
 
       - run: pnpm install
