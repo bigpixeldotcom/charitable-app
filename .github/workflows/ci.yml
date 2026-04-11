@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          cache: "pnpm"
+          cache: "npm"
           node-version: "lts/*"
       - run: pnpm install
       - run: pnpm run lint
