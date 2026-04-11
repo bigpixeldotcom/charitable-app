@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main, feat/ci-renovate-prettier]
+  pull_request:
+    branches: [main, feat/ci-renovate-prettier]
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache: "pnpm"
+          node-version: "lts/*"
+      - run: pnpm install
+      - run: pnpm run lint
+      - run: pnpm run type-check

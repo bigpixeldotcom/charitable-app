@@ -1,0 +1,21 @@
+{
+  "name": "charitable-app",
+  "description": "This is a monorepo to help charities get online and start accepting donations. It is based around Next.js for frontend and backend.",
+  "homepage": "https://github.com/bigpixeldotcom/charitable-app#readme",
+  "bugs": {
+    "url": "https://github.com/bigpixeldotcom/charitable-app/issues"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "run-p --print-label dev:*",
+    "dev:frontend": "pnpm --filter=frontend run dev",
+    "dev:backend": "pnpm --filter=backend run dev",
+    "format": "prettier --cache --write .",
+    "lint": "pnpm --filter=frontend run lint",
+    "type-check": "pnpm -r run type-check"
+  },
+  "devDependencies": {
+    "npm-run-all2": "^5.0.2",
+    "prettier": "^3.8.1"
+  }
+}
