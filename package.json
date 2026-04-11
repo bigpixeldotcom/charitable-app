@@ -5,7 +5,7 @@
   "bugs": {
     "url": "https://github.com/bigpixeldotcom/charitable-app/issues"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@latest",
   "scripts": {
     "dev": "run-p --print-label dev:*",
     "dev:frontend": "pnpm --filter=frontend run dev",
