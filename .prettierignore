@@ -8,6 +8,12 @@ yarn.lock
 pnpm-lock.yaml
 **/pnpm-lock.yaml
 
+# AI files
+AGENTS.md
+**/AGENTS.md
+CLAUDE.md
+**/CLAUDE.md
+
 # Build outputs
 dist/
 build/

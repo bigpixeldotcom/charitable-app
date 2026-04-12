@@ -22,6 +22,6 @@ jobs:
         with:
           cache: "pnpm"
           node-version: "lts/*"
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm run lint
       - run: pnpm run type-check

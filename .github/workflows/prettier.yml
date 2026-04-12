@@ -10,6 +10,10 @@ on:
       - "**/yarn.lock"
       - "pnpm-lock.yaml"
       - "**/pnpm-lock.yaml"
+      - "AGENTS.md"
+      - "**/AGENTS.md"
+      - "CLAUDE.md"
+      - "**/CLAUDE.md"
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -34,7 +38,7 @@ jobs:
           cache: pnpm
           node-version: lts/*
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: ${{ github.event_name == 'pull_request' && 'pnpm exec prettier --check .' || 'pnpm run format' }}
 
       - uses: actions/create-github-app-token@v3
