@@ -2,7 +2,7 @@ name: Prettier
 
 on:
   push:
-    branches: [main, feat/ci-renovate-prettier]
+    branches: [main]
     paths-ignore:
       - "package-lock.json"
       - "**/package-lock.json"
@@ -10,6 +10,8 @@ on:
       - "**/yarn.lock"
       - "pnpm-lock.yaml"
       - "**/pnpm-lock.yaml"
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -33,9 +35,10 @@ jobs:
           node-version: lts/*
 
       - run: pnpm install
-      - run: pnpm run format
+      - run: ${{ github.event_name == 'pull_request' && 'pnpm exec prettier --check .' || 'pnpm run format' }}
 
       - uses: actions/create-github-app-token@v3
+        if: github.event_name == 'push'
         id: generate-token
         with:
           client-id: ${{ vars.CHARITABLE_APP_CLIENT_ID }}
@@ -45,6 +48,7 @@ jobs:
           permission-contents: write
           permission-pull-requests: write
       - uses: peter-evans/create-pull-request@v8
+        if: github.event_name == 'push'
         with:
           body: I ran `pnpm format` 🧑‍💻
           branch: actions/prettier
