@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [main, feat/ci-renovate-prettier]
+    branches: [main]
   pull_request:
-    branches: [main, feat/ci-renovate-prettier]
+    branches: [main]
+  pull_request_target:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
