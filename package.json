@@ -15,7 +15,7 @@
     "type-check": "pnpm -r run type-check"
   },
   "devDependencies": {
-    "npm-run-all2": "^8.0.4",
+    "npm-run-all2": "^9.0.3",
     "prettier": "^3.8.2"
   }
 }
